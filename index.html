@@ -1,51 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Mohave&display=swap');
-        </style>
-        
+        @import url("https://fonts.googleapis.com/css2?family=Mohave&display=swap");
+    </style>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <title>WeatherApp</title>
+    <link rel="icon" href="assets/icons/animated/day.svg" />
 </head>
+
 <body>
+    <div id="contenedorTodo">
+        <div id="tituloInput">
+            <h1  class="tituloWeatherApp">
+                <label id="labelSwitch" class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                </label> WeatherApp <img src="assets/icons/animated/day.svg" alt="">
+            </h1>
 
-    <div id="contenedorTodo" >
+            <div id="inputCiudades">
+                <div class="contenedorInputs">
+                    <form id="formClima">
 
-        <div id="tituloInput" >
-            <h1>WeatherApp</h1>
-            <div id="inputCiudades" >
-                <input placeholder="Ingrese una ciudad" type="search" name="" id="">
+                        <div id="inputS" >
+
+                        <div class="form__group field">
+                            <input required="" placeholder="País" class="form__field" type="input" name="país" >
+                            <label class="form__label" for="name">País</label>
+                        </div>
+
+                        <div class="form__group field">
+                            <input required="" placeholder="Provincia" class="form__field" type="input" name="provincia" >
+                            <label class="form__label" for="name">Provincia</label>
+                        </div>
+
+                        <div class="form__group field">
+                            <input required="" placeholder="Localidad" class="form__field" type="input" name="localidad" >
+                            <label class="form__label" for="name">Localidad</label>
+                        </div>
+
+                        <button class="btn-search">
+                            Buscar
+                        </button>
+
+                    </div>
+                    </form>
+                </div>
             </div>
-            <button></button>
+
+
         </div>
 
-        <div id="contenedorCajas" >
+        <div id="contenedorCajas">
+            <div id="caja1"></div>
 
-            <div id="caja1" >
-                <p id="temperaturaValor" ></p>
-                <p id="temperaturaDescripcion" ></p>
-            </div>
-    
-            <div id="caja2" >
-                <p id="ubicacion" ></p>
-                <img id="iconoAnimado" src="" alt="">
-            </div>
-    
-            <div id="caja3" >
-                <p>Velocidad del Viento</p>
-                <p id="vientoVelocidad" ></p>
-            </div>
-    
+            <div id="caja2"></div>
+
+            <div id="caja3"></div>
         </div>
-
     </div>
-    
-    
 
     <script src="JS/script.js"></script>
 </body>
+
 </html>

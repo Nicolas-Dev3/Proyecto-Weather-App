@@ -1,14 +1,15 @@
-body{
+body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Mohave', sans-serif;
-    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    font-family: "Mohave", sans-serif;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
     background-repeat: no-repeat;
+    transition: ease 2s;
 }
 
-#contenedorTodo{
-    width: 100vh;
+#contenedorTodo {
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -18,39 +19,326 @@ body{
     /* border: 2px solid; */
 }
 
-#tituloInput{
+
+.switch {
+    --width-of-switch: 70px;
+    --height-of-switch: 30px;
+    /* size of sliding icon -- sun and moon */
+    --size-of-icon: 20px;
+    /* it is like a inline-padding of switch */
+    --slider-offset: 45px;
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon, 1.4em);
+    width: var(--size-of-icon, 1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset, 0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+    ;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #303136;
+}
+
+input:checked+.slider:before {
+    left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+    background: #303136;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+
+.darkMode {
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+
+body.darkMode h1 {
+    color: aliceblue;
+}
+
+.tituloWeatherApp {
+    width: 70%;
+    font-size: 50px;
+    color: #537895;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tituloInput {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#contenedorCajas{
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+
+
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 180px;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 17px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown~.form__label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #116399, #38caef);
+    border-image-slice: 1;
+}
+
+.form__field:focus~.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #38caef;
+    font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+    box-shadow: none;
+}
+
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 180px;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 17px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown~.form__label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #116399, #38caef);
+    border-image-slice: 1;
+}
+
+.form__field:focus~.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #38caef;
+    font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+    box-shadow: none;
+}
+
+
+.btn-search {
+    --clr-font-main: hsla(0 0% 20% / 100);
+    --btn-bg-1: hsla(194 100% 69% / 1);
+    --btn-bg-2: hsla(217 100% 56% / 1);
+    --btn-bg-color: hsla(360 100% 100% / 1);
+    --radii: 0.5em;
+    cursor: pointer;
+    padding: 0.9em 1.4em;
+    min-width: 120px;
+    min-height: 44px;
+    font-size: var(--size, 1rem);
+    font-weight: 500;
+    font-family: "Mohave", sans-serif;
+    transition: 0.8s;
+    background-size: 280% auto;
+    background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+    border: none;
+    border-radius: var(--radii);
+    color: var(--btn-bg-color);
+    box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
+
+.btn-search:hover {
+    background-position: right top;
+}
+
+.btn-donate:is(:focus, :focus-within, :active) {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-search {
+        transition: linear;
+    }
+}
+
+
+
+
+
+#inputS {
+    width: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+#inputCiudades {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+#contenedorCajas {
     width: 100vh;
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
 }
 
-#caja1{
-    width: 25%;
-    height: 25%;
-    border: 2px solid;
+#caja1 {
+    width: 30%;
+    height: 30vh;
+    padding: 10px;
+    background-color: #3da9fc;
+    border-radius: 10px;
+    border: 2px solid #16213E;
 }
 
-#caja2{
-    width: 25%;
-    height: 25%;
-    border: 2px solid;
+#caja1 p {
+    color: whitesmoke;
+    font-size: 24px;
 }
 
-#caja3{
-    width: 25%;
-    height: 25%;
-    border: 2px solid;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly; */
+#caja2 {
+    width: 30%;
+    height: 30vh;
+    padding: 10px;
+    background-color: #3da9fc;
+    border-radius: 10px;
+    border: 2px solid #16213E;
 }
 
+#caja2 p {
+    color: whitesmoke;
+    font-size: 24px;
+}
 
+#caja3 {
+    width: 30%;
+    height: 30vh;
+    padding: 10px;
+    background-color: #3da9fc;
+    border-radius: 10px;
+    border: 2px solid #16213E;
+}
+
+#caja3 p {
+    color: whitesmoke;
+    font-size: 24px;
+}
